@@ -1,5 +1,6 @@
 """
     Источник: https://webdevblog.ru/realizaciya-shablona-singleton-v-python/?
+    Реализация паттерна Singleton с использованием мета классов
 """
 import sqlite3
 
