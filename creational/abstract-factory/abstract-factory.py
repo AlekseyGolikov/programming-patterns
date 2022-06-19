@@ -1,10 +1,12 @@
 """
-    Паттерн проектирования Abstract fabric (Абстрактная фабрика)
+    Паттерн "Абстрактная фабрика" (Abstract Factory) предоставляет интерфейс для создания семейств взаимосвязанных
+    объектов с определенными интерфейсами без указания конкретных типов данных объектов. Тогда как фабричный метод
+    позволяет создавать лишь экземпляр.
 
-    Паттерн Fabric method предполагает, что по определённому критерию объект базового класса вызывает объекты подклассов.
-    Те, в свою очередь инициализируют требуемые экземпляры.
-    В рамках паттерна Abstract fabric в отличие от фабричного метода на выходе не инициализируемый экземпляр,
-    а семейство объектов (другой подкласс)
+    Когда использовать абстрактную фабрику:
+    1) когда система не должна зависеть от способа создания и компоновки новых объектов
+    2) когда создаваемые объекты должны использоваться вместе и являются взаимосвязанными
+
 """
 from abc import ABC, abstractmethod
 
@@ -13,16 +15,6 @@ class Product(ABC):
     @abstractmethod
     def cook(self):
         pass
-
-class FettuccineAlfredo(Product):
-    name = 'Fettuccine Alfredo'
-    def cook(self):
-        print('Italian main course prepared: %s' % self.name)
-
-class Tiramisu(Product):
-    name = 'Tiramisu'
-    def cook(self):
-        print('Italian desert prepared: %s' % self.name)
 
 class DuckAlOrange(Product):
     name = "Duck A L'Orange"
@@ -35,6 +27,17 @@ class CremeBrulee(Product):
 
     def cook(self):
         print('French desert prepared: %s' % self.name)
+
+class FettuccineAlfredo(Product):
+    name = 'Fettuccine Alfredo'
+    def cook(self):
+        print('Italian main course prepared: %s' % self.name)
+
+class Tiramisu(Product):
+    name = 'Tiramisu'
+    def cook(self):
+        print('Italian desert prepared: %s' % self.name)
+
 
 class AbstractFactory(ABC):
 
@@ -53,7 +56,6 @@ class ItalianDishesFactory(AbstractFactory):
             return FettuccineAlfredo()
         if type_of_meal == 'desert':
             return Tiramisu()
-
 
 
 class FrenchDishesFactory(AbstractFactory):
@@ -85,8 +87,8 @@ if __name__ == '__main__':
     # main = fac1.get_dish('main')
     # main.cook()
     # desert = fac1.get_dish('desert').cook()
-    f = FactoryProducer().get_factory('italian').get_dish('main').cook()
-    f = FactoryProducer().get_factory('italian').get_dish('desert').cook()
-    f = FactoryProducer().get_factory('french').get_dish('main').cook()
-    f = FactoryProducer().get_factory('french').get_dish('desert').cook()
-    f = FactoryProducer().get_factory('italian').create_desert().cook()
+    FactoryProducer().get_factory('italian').get_dish('main').cook()
+    FactoryProducer().get_factory('italian').get_dish('desert').cook()
+    FactoryProducer().get_factory('french').get_dish('main').cook()
+    FactoryProducer().get_factory('french').get_dish('desert').cook()
+    FactoryProducer().get_factory('italian').create_desert().cook()
