@@ -8,6 +8,7 @@
 1) Singleton (одиночка)
 > singleton.py - Классический Singleton с помощью метода __new__(cls)  
 > singleton1.py - Метод отложенной инициализации экземпляра с помощью метода __init__(self)  
+> singleton2.py - Создание класса по методу Singleton с помощью функции-декоратора  
 > sqlite-singleton.py - Реализация паттерна Singleton с использованием мета классов  
 
 2) Factory Method (Фабрика или фабричный метод)
