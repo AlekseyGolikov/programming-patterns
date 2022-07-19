@@ -1,4 +1,8 @@
-
+"""
+	Вариант 2 - реализация паттерна Команда
+	Этот вариант также соответствует паттерну Компановщик, т.к. и отдельные команды, и макрос команд имеют
+	одинаковый интерфейс (методы do() и undo())
+"""
 class Grid:
 	def __init__(self, width: int, height: int) -> None:
 		self.__cells = [['white' for _ in range(height)] for _ in range(width)]
