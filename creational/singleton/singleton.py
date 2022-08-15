@@ -1,12 +1,13 @@
 
-class Singleton(object):
+class Singleton:
+
     def __new__(cls):
-        if not hasattr(cls, 'instance'):
-            cls.instance = super(Singleton, cls).__new__(cls)
-        return cls.instance
+        if not hasattr(cls, '_instance'):
+            cls._instance = super(Singleton, cls).__new__(cls)
+        return cls._instance
 
 
-s = Singleton()
-print("Object created", s)
 s1 = Singleton()
-print("Object created", s1)
+s2 = Singleton()
+print(s1)
+print(s2)
